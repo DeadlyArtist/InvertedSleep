@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "package": "invertedsleep.fabric.mixin",
+  "plugin": "invertedsleep.fabric.MixinPluginFabric",
+  "compatibilityLevel": "JAVA_17",
+  "minVersion": "0.8",
+  "client": [
+  ],
+  "mixins": [
+    "ServerPlayerEntityMixin",
+    "ServerWorldMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
