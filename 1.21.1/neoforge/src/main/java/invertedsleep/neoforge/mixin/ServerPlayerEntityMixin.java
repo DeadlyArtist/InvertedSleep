@@ -51,7 +51,6 @@ public abstract class ServerPlayerEntityMixin extends PlayerEntity {
                     }
                 }
 
-
                 return Either.right(Unit.INSTANCE);
             }
         } else {
@@ -59,7 +58,6 @@ public abstract class ServerPlayerEntityMixin extends PlayerEntity {
                 return Either.left(SleepFailureReason.NOT_POSSIBLE_NOW);
             }
         }
-
 
         return vanillaResult;
     }
