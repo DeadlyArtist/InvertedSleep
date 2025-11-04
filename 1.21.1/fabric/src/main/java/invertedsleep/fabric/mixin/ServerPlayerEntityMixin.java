@@ -35,7 +35,7 @@ public abstract class ServerPlayerEntityMixin extends PlayerEntity {
 
     @Inject(method = "trySleep", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/network/ServerPlayerEntity;getWorld()Lnet/minecraft/world/World;", ordinal = 3), cancellable = true)
     public void changeTrySleepCriteria(BlockPos pos, CallbackInfoReturnable<Either<SleepFailureReason, Unit>> cir) {
-        if (self.getWorld().getTimeOfDay() != TimeUtils.NOON) {
+        if (!TimeUtils.isNoon(self.getWorld())) {
             cir.setReturnValue(Either.left(PlayerEntity.SleepFailureReason.NOT_POSSIBLE_NOW));
         } else {
             if (!self.isCreative()) {

@@ -30,7 +30,7 @@ public class ServerWorldMixin {
 
     @Redirect(method = "tickTime", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/world/ServerWorld;setTimeOfDay(J)V"))
     private void redirectStopTimeAtMiddday(ServerWorld world, long timeOfDay) {
-        if (world.getTimeOfDay() == TimeUtils.NOON) return;
+        if (TimeUtils.isNoon(world)) return;
         world.setTimeOfDay(timeOfDay);
     }
 }

@@ -8,6 +8,7 @@
     "ClientWorldMixin"
   ],
   "mixins": [
+    "PhantomSpawnerMixin",
     "PlayerEntityMixin",
     "ServerPlayerEntityMixin",
     "ServerWorldMixin",

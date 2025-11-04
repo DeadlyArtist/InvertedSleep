@@ -34,7 +34,7 @@ public abstract class ServerPlayerEntityMixin extends PlayerEntity {
 
     @Redirect(method = "trySleep", at = @At(value = "INVOKE", target = "Lnet/neoforged/neoforge/event/EventHooks;canPlayerStartSleeping(Lnet/minecraft/server/network/ServerPlayerEntity;Lnet/minecraft/util/math/BlockPos;Lcom/mojang/datafixers/util/Either;)Lcom/mojang/datafixers/util/Either;"))
     public Either<SleepFailureReason, Unit> changeTrySleepCriteria(ServerPlayerEntity player, BlockPos pos, Either<SleepFailureReason, Unit> vanillaResult) {
-        if (self.getWorld().getTimeOfDay() == TimeUtils.NOON) {
+        if (TimeUtils.isNoon(self.getWorld())) {
             if (vanillaResult.left().isPresent() && vanillaResult.left().get().equals(PlayerEntity.SleepFailureReason.NOT_POSSIBLE_NOW)) {
                 if (!self.isCreative()) {
                     double d = 8.0;

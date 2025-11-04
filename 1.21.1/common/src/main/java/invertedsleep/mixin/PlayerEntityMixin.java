@@ -17,7 +17,7 @@ public class PlayerEntityMixin {
 
     @Redirect(method = "tick", at = @At(value = "FIELD", target = "Lnet/minecraft/world/World;isClient:Z", ordinal = 0))
     public boolean changeTrySleepCriteria(World world) {
-        if (!self.getWorld().isClient && world.getTimeOfDay() != TimeUtils.NOON) {
+        if (!self.getWorld().isClient && !TimeUtils.isNoon(world)) {
             self.wakeUp(false, true);
         }
         return true;

@@ -16,7 +16,7 @@ public class ClientWorldMixin {
 
     @Redirect(method = "tickTime", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/world/ClientWorld;setTimeOfDay(J)V"))
     private void redirectStopTimeAtMiddday(ClientWorld world, long timeOfDay) {
-        if (world.getTimeOfDay() == TimeUtils.NOON) return;
+        if (TimeUtils.isNoon(world)) return;
         world.setTimeOfDay(timeOfDay);
     }
 }
